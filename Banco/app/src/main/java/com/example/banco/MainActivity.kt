@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 setPositiveButton("Salvar", DialogInterface.OnClickListener{ dialog, which ->
                     val pessoa = Pessoa(edit.text.toString())
                     this@MainActivity.dao.add(pessoa)
-                    Log.i("APP_BANCO", this@MainActivity.dao.get().toString())
+//                    Log.i("APP_BANCO", this@MainActivity.dao.get().toString())
                 })
                 setNegativeButton("Cancelar", null)
             }
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.bt.setOnLongClickListener{
-            val pessoa = this.dao.getPessoa(6)
+            val pessoa = this.dao.getPessoa(7)
             pessoa?.nome = "outro nome"
             Log.i("APP_BANCO", pessoa.toString())
 

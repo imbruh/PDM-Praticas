@@ -34,11 +34,23 @@ class PessoaDAO (context: Context) {
     }
 
     fun getPessoa(id: Int): Pessoa?{
-        for (p in this.get()) {
-            if (p.id == id)
-                return p
-        }
-        return null
+        val where = "id = ?"
+        val pWhere = arrayOf(id.toString())
+        val cursor = this.banco.readableDatabase.query("pessoas", null, where, pWhere, null, null, null)
+        cursor.moveToFirst()
+
+        val id = cursor.getInt(cursor.getColumnIndex("id"))
+        val nome = cursor.getString(cursor.getColumnIndex("nome"))
+        val datahora = cursor.getLong(cursor.getColumnIndex("datahora"))
+
+        val pessoa = Pessoa(id,nome,datahora)
+
+        return pessoa
+//        for (p in this.get()) {
+//            if (p.id == id)
+//                return p
+//        }
+//        return null
     }
 
     fun delete(pessoa: Pessoa){
