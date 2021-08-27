@@ -46,11 +46,6 @@ class PessoaDAO (context: Context) {
         val pessoa = Pessoa(id,nome,datahora)
 
         return pessoa
-//        for (p in this.get()) {
-//            if (p.id == id)
-//                return p
-//        }
-//        return null
     }
 
     fun delete(pessoa: Pessoa){
